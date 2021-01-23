@@ -1,16 +1,23 @@
 <div class="row">
   <div class="col offset-md-3 mt-4">
     <h3>Reset my password</h3>
-    <form>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
       <div class="form-group">
         <label for="resetPass">Enter the email address associated with your account.</label>
         <input
           type="text"
+          name="email"
+          ngModel
+          required
+          #email="ngModel"
           class="form-control"
           id="resetPass"
           placeholder="example@dmail.com">
       </div>
-      <button type="submit" class="btn btn-primary">Reset</button>
+      <button
+        type="submit"
+        [disabled]="f.invalid"
+        class="btn btn-primary">Reset</button>
     </form>
   </div>
 </div>

@@ -1,11 +1,15 @@
 <div class="row">
   <div class="col offset-md-3 mt-4">
     <h3>Register for Gametracker</h3>
-    <form>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
       <div class="form-group">
         <label for="regUserEmail">Enter an email address for your new account.</label>
         <input
           type="text"
+          name="email"
+          ngModel
+          required
+          #email="ngModel"
           class="form-control"
           id="regUserEmail"
           placeholder="example@dmail.com">
@@ -14,6 +18,10 @@
         <label for="regUser">Please enter a username and a password.</label>
         <input
           type="text"
+          name="username"
+          ngModel
+          required
+          #username="ngModel"
           class="form-control"
           id="regUser"
           placeholder="Username">
@@ -22,11 +30,18 @@
         <label for="regPass"></label>
         <input
           type="password"
+          name="password"
+          ngModel
+          required
+          #password="ngModel"
           class="form-control"
           id="regPass"
           placeholder="My password">
       </div>
-      <button type="submit" class="btn btn-primary">Create Account</button>
+      <button
+        type="submit"
+        [disabled]="f.invalid"
+        class="btn btn-primary">Create Account</button>
     </form>
   </div>
 </div>
